@@ -73,7 +73,37 @@
 					</div>';
           }
 		}
-	
+		
+		public static function verificarUsuario($conexion, $correo,$contrasena){
+				$sql = sprintf(
+						"SELECT  nombre_usuario, correo, contrasena FROM tbl_usuarios WHERE  correo = '%s' AND contrasena = '%s'",
+						$correo,
+						$contrasena
+					);
+				//echo ($sql);
+				$resultado = $conexion->ejecutarConsulta($sql);
+				$cantidadRegistros = $conexion->cantidadRegistros($resultado);
+				//$respuesta=array();
+				$fila = $conexion->obtenerFila($resultado);
+				if ($cantidadRegistros==1){
+					//$fila = $conexion->obtenerFila($resultado);
+					//$respuesta="Si tiene acceso" ;
+					echo "si existe registro";
+				}else{
+					//$respuesta="No existe Registro" ;
+					echo "no existe registro";
+				}
+		}
+
+		public static function guardarUsuario($conexion,$nombre,$email,$contra,$imagen){
+			/*$sql = sprintf(,
+				$conexion->antiInyeccion($this->nombre),
+				$conexion->antiInyeccion($this->correo),
+				$conexion->antiInyeccion($this->contra),
+				$conexion->antiInyeccion($this->imagen)
+		    $sql="INSERT INTO tbl_usuarios(nombre_usuario, correo, contrasena, url_imagen_perfil) VALUES ($nombre,$email,$contra,$imagen)";
+		    $resultado=$conexion->ejecutarConsulta($sql);
+		}
 
 	}
 ?>

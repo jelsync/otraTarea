@@ -39,14 +39,14 @@
           <a class="navbar-brand" href="#">Feizbuk</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right">
+          <form class="navbar-form navbar-right form-singin" method="POST">
             <div class="form-group">
-              <input type="text" placeholder="Email" class="form-control">
+              <input type="text" placeholder="Email" class="form-control" id="txt-correo">
             </div>
             <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control">
+              <input type="password" placeholder="Password" class="form-control" id="txt-password">
             </div>
-            <button type="button" class="btn btn-primary">Iniciar sesión</button>
+            <button  onclick="comprobarRegistro();" type="button" class="btn btn-primary" id="btn-login">Iniciar sesión</button>
             <button type="button" data-toggle="modal" data-target="#registroUsuariosModal" class="btn btn-primary" title="Registrar"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
           </form>
         </div><!--/.navbar-collapse -->
@@ -63,9 +63,12 @@
           <a class="btn btn-primary btn-lg" href="#" id="btn-tengo-hambre" role="button">Muero de hambre</a>&nbsp;&nbsp;
           <a class="btn btn-primary btn-lg" href="#" id="btn-ir-banio" role="button">Quiero ir al baño</a>
         </p>
+
       </div>
     </div>
-
+    <div id="respuesta" style="margin-left:200px;"></div>
+    <br>
+    <br>
     <div class="container">
       <!-- Example row of columns -->
       <div class="row ">
@@ -76,30 +79,10 @@
           <p>Elija el perfil que representa actualmente. </p>
           <div class="rowglyphicon-thumbs-up">
             <div id="div-usuarios"></div>
-              <!--1
-              <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2  card-container">
-                  
-           
-              <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2  card-container">
-                
-              </div>
-           
-              <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2  card-container">
-                
-              </div>
-            
-              <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2  card-container">
-                
-              </div>
-         
-              <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2  card-container">
-                
-              </div>
-             
-              <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2  card-container">
-               
-              </div>-->
+
           </div>
+          <br>
+
         </div>
         <div class="col-md-6">
           <h4>Nueva publicación:</h4>
@@ -129,10 +112,10 @@
       <div class="modal-body">
           <!--Formulario de registro-->
           <input type="text" name="txt-usuario" id="txt-usuario" class="form-control" placeholder="Usuario"><br>
-          <input type="text" name="txt-correo" id="txt-correo" class="form-control" placeholder="Correo"><br>
+          <input type="text" name="txt-correo" id="txt-email" class="form-control" placeholder="Correo"><br>
           <input type="password" name="txt-contrasena" id="txt-contrasena" class="form-control" placeholder="Contraseña"><br>
-          <select id="slc-url-imagen" class="form-control" placeholder="Imagen">
-            <option selected="selected"></option>
+          <select id="slc-imagen" class="form-control" placeholder="Imagen">
+            <option selected="selected" ></option>
             <option value="img/profile-pics/roshi.jpg">img/profile-pics/roshi.jpg</option>
             <option value="img/profile-pics/shenlong.jpg">img/profile-pics/shenlong.jpg</option>
             <option value="img/profile-pics/taopaipai.jpg">img/profile-pics/taopaipai.jpg</option>
@@ -147,7 +130,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Guardar</button>
+        <button onclick="guardar();" type="button" class="btn btn-primary" id="btn-guardar">Guardar</button>
       </div>
     </div>
   </div>

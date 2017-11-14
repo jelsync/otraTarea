@@ -1,12 +1,52 @@
-function seleccionarUsuario(codigoUsuario, nombreUsuario){
-	
-			$("#txt-id-usuario").val(codigoUsuario);
-			$("#txt-nombre").val(nombreUsuario);
-		}
+function seleccionarUsuario(codigoUsuario, nombre){
+	$("#txt-id-usuario").val(codigoUsuario);
+	//$("#txt-nombre").val(nombre);
+	$("#txt-nombre").attr("value",nombre);
+}
 function agregarAmigo(codigoNuevoAmigo){
 	alert("Codigo nuevo amigo: " + codigoNuevoAmigo);
 }
+
+
+function guardar(){
+		var parametros ="txt-usuario="+$("#txt-usuario").val()+"&txt-email=" +$("#txt-email").val() + 
+						"&txt-contrasena="+$("#txt-contrasena").val()+"&slc-imagen="+$("#slc-imagen").val();
+		alert(parametros);
+		$.ajax({
+			url:"ajax/acciones-login.php?accion=guardar",
+			method: "POST",
+			data: parametros,
+			success:function(respuesta){
+				$("#respuesta").html("registro almacenado");
+			},
+			error:function(e){
+				alert("Error:"+ e);
+			}
+		});
+
+}
+
+function comprobarRegistro(){
+	//$("#btn-login").click(function(){
+			var parametros = "txt-correo=" +$("#txt-correo").val() + 
+						"&txt-password="+$("#txt-password").val();
+			alert(parametros);
+			$.ajax({
+				url:"ajax/acciones-login.php?accion=login",
+				method: "POST",
+				data: parametros,
+				success:function(respuesta){
+					$("#respuesta").html(respuesta);
+				},
+				error:function(e){
+					alert("Error:"+ e);
+				}
+		});
+	
+}
 $(document).ready(function(){
+	
+
 	$.ajax({
 		url:"ajax/get-info.php?accion=obtener_usuarios",
 		data:"",
@@ -30,6 +70,7 @@ $(document).ready(function(){
             alert(e);
 		}
 	});	
+
 
 
 
