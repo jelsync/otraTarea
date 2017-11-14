@@ -101,8 +101,10 @@
 				$conexion->antiInyeccion($this->correo),
 				$conexion->antiInyeccion($this->contra),
 				$conexion->antiInyeccion($this->imagen)
+		    );*/
 		    $sql="INSERT INTO tbl_usuarios(nombre_usuario, correo, contrasena, url_imagen_perfil) VALUES ($nombre,$email,$contra,$imagen)";
 		    $resultado=$conexion->ejecutarConsulta($sql);
+		   // $resultado=$conexion->ejecutarConsulta($sql);
 		}
 
 	}
